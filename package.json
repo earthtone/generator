@@ -7,7 +7,7 @@
     "pretest": "eslint ./**/*.js",
     "test": "browserify tests/unit/*.test.js | tape-run | tap-spec",
     "compile": "browserify lib/main.js -o js/bundle.js",
-    "watch": "nodemon -e js,json,css,md -i dist -i  -x \"npm run compile && build\"",
+    "watch": "nodemon -e js,json,css,md -i dist -i  -x \"npm run compile && build ./dist\"",
     "start": "concurrently --kill-others \"npm run watch\" \"live-server dist --watch=js\""
   },
   "bin": {
@@ -17,13 +17,15 @@
   "license": "ISC",
   "devDependencies": {
     "browserify": "^14.5.0",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.12.2",
     "concurrently": "^3.5.1",
     "eslint": "^4.14.0",
     "live-server": "^1.2.0",
     "nodemon": "^1.14.6",
     "tap-spec": "^4.1.1",
-    "tape": "^4.8.0",
-    "tape-run": "^3.0.1"
+    "tape": "^4.8.0"
   },
   "dependencies": {
     "@earthtone/view-class": "^1.1.0",
