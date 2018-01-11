@@ -1,5 +1,5 @@
 const test = require('tape');
-const generator = require('../../lib/template');
+const generator = require('../../bin/lib/template');
 
 test('Generator Takes Config Object', function(assert){
 	assert.throws(function(){
