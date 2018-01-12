@@ -7,10 +7,27 @@ program
 	.parse(process.argv);
 
 var root_dir = program.args;
-var sub_dir = ['css', 'img', 'js', 'meta', 'pages'];
+var proj_dir = ['public', 'meta', 'pages'];
+var pub_dir = ['css', 'img', 'js'];
 
-sub_dir.forEach(dir => {
+proj_dir.forEach(dir => {
 	let dirName = `${root_dir || '.'}/${dir}`;
+
+	fs.ensureDir(dirName)
+		.then(successMsg)
+		.catch(errorMsg);
+
+	function successMsg(){
+		console.log(chalk.dim.green(`Created ${dirName}`));
+	}
+
+	function errorMsg(err){
+		console.error(chalk.red(`${err.message}`));
+	}
+});
+
+pub_dir.forEach(dir => {
+	let dirName = `${root_dir || '.'}/public/${dir}`;
 	fs.ensureDir(dirName)
 		.then(successMsg)
 		.catch(errorMsg);
@@ -55,7 +72,7 @@ fs.writeFile(index_meta, JSON.stringify(meta_proto), function(err){
 	console.log(chalk.dim.yellow(`Created ${index_meta}`));
 });
 
-var main_css = `${root_dir || '.'}/css/main.css`;
+var main_css = `${root_dir || '.'}/public/css/main.css`;
 fs.writeFile(main_css, '', function(err){
 	if(err){
 		console.error(chalk.red(`${err.message}`));

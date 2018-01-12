@@ -7,14 +7,18 @@ var md = require('marked');
 var template = require('./lib/template');
 
 program
+		// .arguments('<root>')
 		.option('-o, --output <output>', 'Directory for HTML output')
 		.option('-p, --pages <pages>', 'Directory of Markdown Files to be Ingested')
 		.option('-m, --meta <metadata>', 'Directory JSON Metadata')
 		.parse(process.argv);
 
-var outPath = program.output || '.';
-var pagesPath = program.pages || `${outPath}/pages`;
-var metaPath = program.meta || `${outPath}/meta`;
+
+var rootPath = program.args[0];
+
+var outPath = program.output || `${rootPath}/public`;
+var pagesPath = program.pages || `${rootPath}/pages`;
+var metaPath = program.meta || `${rootPath}/meta`;
 var pages = {}, pagesMeta = {};
 
 
