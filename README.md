@@ -24,8 +24,24 @@ grayson gen <project-directory> [output-directory] [pages-directory] [meta-direc
 
 ```
 
-Traverses `/pages` directory and `/meta` directory for files. 
+Traverses `pages` directory and `meta` directory for files. Both the source directories and output directories are configurable, but default to an assumed structure generated during `grayson init`.
 
-E.G. The files `/pages/index.md` & `/meta/index.json` yield an `index.html` file output in the `/public` directory.
+EG: The files `/pages/index.md` & `/meta/index.json` yield an `index.html` file output in the `/public` directory.
 
-Both the source directories and output directories are configurable, but default to an assumed structure generated during `grayson init`.
+Sample Metadata
+
+```
+{
+    lang: 'en',
+    title: 'A Page',
+    stylesheets: ['css/normalize.css', 'css/main.css'],
+    scripts: ['js/bundle.js'],
+    charset: 'utf-8',
+    description: 'This is a page',
+    keywords: 'page, sample',
+    author: 'John Doe',
+    favicon: 'img/favicon.png',
+    viewport: 'width=device-width, initial-scale=1',
+    extra: []
+}
+```
