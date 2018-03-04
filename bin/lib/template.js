@@ -41,6 +41,11 @@ module.exports = function generatePage(state){
 							: ''
 						: 'template.js'
 				}
+				<link rel="icon" type="image/png" href="${meta.favicon}">
+			</head>
+			<body>
+				${content}
+				
 				${
 					meta.hasOwnProperty('scripts')
 						?meta.scripts.length
@@ -48,10 +53,6 @@ module.exports = function generatePage(state){
 							: ''
 						: ''
 				}
-				<link rel="icon" type="image/png" href="${meta.favicon}">
-			</head>
-			<body>
-				${content}
 			</body>
 		</html>`;
 };

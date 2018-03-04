@@ -10,20 +10,20 @@ var root_dir = program.args;
 var proj_dir = ['public', 'meta', 'pages'];
 var pub_dir = ['css', 'img', 'js'];
 
+function successMsg(){
+	console.log(chalk.dim.green(`Created ${dirName}`));
+}
+
+function errorMsg(err){
+	console.error(chalk.red(`${err.message}`));
+}
+
 proj_dir.forEach(dir => {
 	let dirName = `${root_dir || '.'}/${dir}`;
 
 	fs.ensureDir(dirName)
 		.then(successMsg)
 		.catch(errorMsg);
-
-	function successMsg(){
-		console.log(chalk.dim.green(`Created ${dirName}`));
-	}
-
-	function errorMsg(err){
-		console.error(chalk.red(`${err.message}`));
-	}
 });
 
 pub_dir.forEach(dir => {
@@ -31,14 +31,6 @@ pub_dir.forEach(dir => {
 	fs.ensureDir(dirName)
 		.then(successMsg)
 		.catch(errorMsg);
-
-	function successMsg(){
-		console.log(chalk.dim.cyan(`Created ${dirName}`));
-	}
-
-	function errorMsg(err){
-		console.error(chalk.red(`${err.message}`));
-	}
 });
 
 var index_page = `${root_dir || '.'}/pages/index.md`;
