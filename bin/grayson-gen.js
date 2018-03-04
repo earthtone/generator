@@ -14,7 +14,7 @@ program
 		.parse(process.argv);
 
 
-var rootPath = program.args[0];
+var rootPath = process.cwd();
 
 var outPath = program.output || `${rootPath}/public`;
 var pagesPath = program.pages || `${rootPath}/markdown`;

@@ -3,9 +3,7 @@ const program = require('commander');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 
-program.parse(process.argv);
-
-var root_dir = program.args;
+var root_dir = process.cwd();
 var proj_dir = ['public', 'meta', 'markdown'];
 var pub_dir = ['css', 'img', 'js'];
 
@@ -25,7 +23,7 @@ var meta_proto = {
 };
 
 var main_css = `${root_dir || '.'}/public/css/main.css`;
-var package_json = fs.readFileSync('./lib/sample-package.json');
+var package_json = fs.readFileSync(`${__dirname}/lib/sample-package.json`);
 
 proj_dir.forEach(dir => {
 	let dirName = `${root_dir || '.'}/${dir}`;
@@ -67,7 +65,7 @@ fs.writeFile(main_css, '', function(err) {
 	console.log(chalk.dim.yellow(`Created ${main_css}`));
 });
 
-fs.writefile('package.json', package_json, function(err){
+fs.writeFile('package.json', package_json, function(err){
 	if(err){
 		console.error(chalk.red(`${err.message}`));
 		throw err;
