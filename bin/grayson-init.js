@@ -25,6 +25,7 @@ var meta_proto = {
 };
 
 var main_css = `${root_dir || '.'}/public/css/main.css`;
+var package_json = fs.readFileSync('./lib/sample-package.json');
 
 proj_dir.forEach(dir => {
 	let dirName = `${root_dir || '.'}/${dir}`;
@@ -64,6 +65,15 @@ fs.writeFile(main_css, '', function(err) {
 		throw err;
 	}
 	console.log(chalk.dim.yellow(`Created ${main_css}`));
+});
+
+fs.writefile('package.json', package_json, function(err){
+	if(err){
+		console.error(chalk.red(`${err.message}`));
+		throw err;
+	}
+
+	console.log(chalk.dim.yellow(`Copied package.json`));
 });
 
 function successMsg(dirName) {
