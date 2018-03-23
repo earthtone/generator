@@ -2,6 +2,7 @@
 const program = require('commander');
 const chalk = require('chalk');
 const fs = require('fs-extra');
+const path = require('path');
 
 var root_dir = process.cwd();
 var proj_dir = ['public', 'meta', 'markdown'];
@@ -65,13 +66,17 @@ fs.writeFile(main_css, '', function(err) {
 	console.log(chalk.dim.yellow(`Created ${main_css}`));
 });
 
-fs.writeFile('package.json', package_json, function(err){
-	if(err){
-		console.error(chalk.red(`${err.message}`));
-		throw err;
-	}
+path.exists('package.json', function(exists){
+	if(!exists){
+		fs.writeFile('package.json', package_json, function(err){
+			if(err){
+				console.error(chalk.red(`${err.message}`));
+				throw err;
+			}
 
-	console.log(chalk.dim.yellow(`Copied package.json`));
+			console.log(chalk.dim.yellow(`Copied package.json`));
+		});
+	}
 });
 
 function successMsg(dirName) {
