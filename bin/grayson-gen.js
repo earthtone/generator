@@ -60,7 +60,7 @@ console.log(chalk.green('Generating pages...'));
 try {
 	for(let page of Object.entries(pages)){
 		let pageName = page[0].slice(0, page[0].lastIndexOf('.'));
-		let metaData = pagesMeta.hasOwnProperty(`${pageName}.json`) ? JSON.parse(pagesMeta[`${pageName}.json`]) : {};
+		let metaData = pagesMeta.hasOwnProperty(`${pageName}.json`) ? JSON.parse(pagesMeta[`${pageName}.json`]) : JSON.parse(pagesMeta['defaults.json']);
 		metaData.title = metaData.title || pageName;
 		
 		let pageContent = page[1];
