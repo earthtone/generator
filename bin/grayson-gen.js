@@ -2,16 +2,16 @@
 const program = require('commander');
 const chalk = require('chalk');
 const fs = require('fs-extra');
+const MarkdownIt = require('markdown-it');
 
-var md = require('marked');
+var md = new MarkdownIt();
 var template = require('./lib/template');
 
 program
-		// .arguments('<root>')
-		.option('-o, --output <output>', 'Directory for HTML output')
-		.option('-p, --pages <pages>', 'Directory of Markdown Files to be Ingested')
-		.option('-m, --meta <metadata>', 'Directory JSON Metadata')
-		.parse(process.argv);
+	.option('-o, --output <output>', 'Directory for HTML output')
+	.option('-p, --pages <pages>', 'Directory of Markdown Files to be Ingested')
+	.option('-m, --meta <metadata>', 'Directory JSON Metadata')
+	.parse(process.argv);
 
 
 var rootPath = process.cwd();
@@ -56,7 +56,7 @@ try {
 		
 		console.log(chalk.dim.green(`Generating ${pageName}.html`));
 
-		fs.writeFileSync(`${outPath}/${pageName}.html`, template({content: md(pageContent), meta: metaData}));
+		fs.writeFileSync(`${outPath}/${pageName}.html`, template({content: md.render(pageContent), meta: metaData}));
 	}
 } catch(err) {
 	console.log(chalk.bold.red(`Error during page generation: ${err}`));

@@ -17,13 +17,15 @@
             "error",
             "unix"
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
         "semi": [
             "error",
             "always"
-        ]
-    }
+        ],
+				"no-console": "off"
+    },
+		"globals": {
+			"process": true,
+			"__dirname": true
+
+		}	
 }

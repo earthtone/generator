@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var chalk = require('chalk');
 var program = require('commander');
 
 program
