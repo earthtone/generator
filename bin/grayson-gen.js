@@ -2,9 +2,20 @@
 const program = require('commander');
 const chalk = require('chalk');
 const fs = require('fs-extra');
-const MarkdownIt = require('markdown-it');
 
-var md = new MarkdownIt();
+const MarkdownIt = require('markdown-it');
+const hljs = require('highlight.js');
+
+var md = new MarkdownIt({
+	highlight: function(s, l){
+		if(l && hljs.getLanguage(l)){
+			return hljs.highlight(l, s).value;
+		}
+
+		return '';
+	}
+});
+
 var template = require('./lib/template');
 
 program
