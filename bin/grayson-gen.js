@@ -7,6 +7,7 @@ const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
 
 var md = new MarkdownIt({
+	html: true,
 	highlight: function(s, l){
 		if(l && hljs.getLanguage(l)){
 			return hljs.highlight(l, s).value;
