@@ -7,22 +7,11 @@ var proj_dir = ['public', 'meta', 'markdown'];
 var pub_dir = ['css', 'img', 'js'];
 
 var index_page = `${root_dir || '.'}/markdown/index.md`;
-var index_meta = `${root_dir || '.'}/meta/index.json`;
-var meta_proto = {
-	lang: 'en',
-	title: 'Index',
-	stylesheets: ['index.css'],
-	charset: 'utf-8',
-	description: '',
-	keywords: '',
-	author: '',
-	favicon: './img/favicon.png',
-	viewport: 'width=device-width, initial-scale=1',
-	extra: [],
-};
+var default_meta = `${root_dir || '.'}/meta/defaults.json`;
 
 var main_css = `${root_dir || '.'}/public/css/main.css`;
 var package_json = fs.readFileSync(`${__dirname}/lib/sample-package.json`);
+var default_meta_json = fs.readFileSync(`${__dirname}/lib/default-metadata.json`);
 
 proj_dir.forEach(dir => {
 	let dirName = `${root_dir || '.'}/${dir}`;
@@ -48,12 +37,12 @@ fs.writeFile(index_page, '# Hello World!', function(err) {
 	console.log(chalk.dim.yellow(`Created ${index_page}`));
 });
 
-fs.writeFile(index_meta, JSON.stringify(meta_proto), function(err) {
+fs.writeFile(default_meta, default_meta_json,  function(err){
 	if (err) {
 		console.error(chalk.red(`${err.message}`));
 		throw err;
 	}
-	console.log(chalk.dim.yellow(`Created ${index_meta}`));
+	console.log(chalk.dim.yellow(`Created ${default_meta}`));
 });
 
 fs.writeFile(main_css, '', function(err) {

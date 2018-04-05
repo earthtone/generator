@@ -1,0 +1,13 @@
+{
+	"lang": "en",
+	"title": "A Page",
+	"stylesheets": [],
+	"scripts": [],
+	"charset": "utf-8",
+	"description": "This is a page",
+	"keywords": "page, sample",
+	"author": "None",
+	"favicon": "img/favicon.png",
+	"viewport": "width=deivce-width, initial-scale=1",
+	"extra": []
+}
