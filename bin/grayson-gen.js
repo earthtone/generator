@@ -5,8 +5,9 @@ const fs = require('fs-extra');
 
 const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
+const namedHeadings = require('markdown-it-named-headings');
 
-var md = new MarkdownIt({
+var md = MarkdownIt({
 	html: true,
 	highlight: function(s, l){
 		if(l && hljs.getLanguage(l)){
@@ -15,7 +16,7 @@ var md = new MarkdownIt({
 
 		return '';
 	}
-});
+}).use(namedHeadings);
 
 var template = require('./lib/template');
 
