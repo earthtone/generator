@@ -7,11 +7,11 @@ var proj_dir = ['public', 'meta', 'markdown'];
 var pub_dir = ['css', 'img', 'js'];
 
 var index_page = `${root_dir || '.'}/markdown/index.md`;
-var default_meta = `${root_dir || '.'}/meta/defaults.json`;
-
+var default_meta_json = `${root_dir || '.'}/meta/defaults.json`;
 var main_css = `${root_dir || '.'}/public/css/main.css`;
-var package_json = fs.readFileSync(`${__dirname}/lib/sample-package.json`);
-var default_meta_json = fs.readFileSync(`${__dirname}/lib/default-metadata.json`);
+
+var package_json = fs.readFileSync(`${__dirname}/lib/_package.json`);
+var default_meta = fs.readFileSync(`${__dirname}/lib/_defaults.json`);
 
 proj_dir.forEach(dir => {
 	let dirName = `${root_dir || '.'}/${dir}`;
@@ -37,12 +37,12 @@ fs.writeFile(index_page, '# Hello World!', function(err) {
 	console.log(chalk.dim.yellow(`Created ${index_page}`));
 });
 
-fs.writeFile(default_meta, default_meta_json,  function(err){
+fs.writeFile(default_meta_json, default_meta,  function(err){
 	if (err) {
 		console.error(chalk.red(`${err.message}`));
 		throw err;
 	}
-	console.log(chalk.dim.yellow(`Created ${default_meta}`));
+	console.log(chalk.dim.yellow(`Created ${default_meta_json}`));
 });
 
 fs.writeFile(main_css, '', function(err) {
