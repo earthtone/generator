@@ -39,5 +39,13 @@ test('navElement', function(assert){
 		assert.equal(actual, expected, message);
 	}
 
+	{
+		let message = 'renders "/" as "Home"';
+		let actual = /<a href="\/">Home<\/a>/.test(navElement(['/']));
+		let expected = true;
+
+		assert.equal(actual, expected, message);
+	}
+
 	assert.end();
 });
