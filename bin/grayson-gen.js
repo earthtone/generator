@@ -18,6 +18,7 @@ var md = MarkdownIt({
 	}
 }).use(namedHeadings);
 
+var makeNavList = require('./lib/make-nav-list');
 var template = require('./lib/template');
 
 program
@@ -69,7 +70,7 @@ try {
 		
 		console.log(chalk.dim.green(`Generating ${pageName}.html`));
 
-		fs.writeFileSync(`${outPath}/${pageName}.html`, template({content: md.render(pageContent), meta: metaData}));
+		fs.writeFileSync(`${outPath}/${pageName}.html`, template({content: { body: md.render(pageContent), nav: makeNavList(pages) }, meta: metaData}));
 	}
 } catch(err) {
 	console.log(chalk.bold.red(`Error during page generation: ${err}`));
