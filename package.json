@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "eslint ./**/*.js",
-    "test": "browserify tests/unit/*.test.js | tape-run | tap-spec"
+    "test": "tape tests/*.test.js | tap-spec"
   },
   "bin": {
     "grayson": "./bin/grayson.js"
