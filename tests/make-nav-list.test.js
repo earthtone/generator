@@ -34,6 +34,17 @@ test('Make Nav List', function(assert){
 		assert.deepEqual(actual, expected, message);
 	}
 
+	{ 
+		let scaffolding = setup(3);
+		scaffolding['.hidden'] = 'secretzzz';
+
+		let message = 'ignores hidden files';
+		let actual = makeNavList(scaffolding);
+		let expected = ['/', '/1.html', '/2.html', '/3.html'];
+
+		assert.deepEqual(actual, expected, message);
+	}
+
 	assert.end();
 });
 
