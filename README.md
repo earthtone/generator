@@ -1,7 +1,7 @@
-![travis](https://travis-ci.org/earthtone/grayson-generator.svg?branch=master)
-
 ![Grayson Logo](assets/Grayson-Logo.png)
 ***Static Site Generator***
+
+![travis](https://travis-ci.org/earthtone/grayson-generator.svg?branch=master)
 
 ### Installation
 ```
