@@ -1,7 +1,7 @@
 const test = require('tape');
 const navElement = require('../bin/lib/nav-element');
 
-test('navElement', function(assert){
+test('Nav Element', function(assert){
 	{
 		let message = 'outputs a string';
 		let actual = typeof navElement();
