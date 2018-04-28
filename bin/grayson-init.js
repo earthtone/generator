@@ -1,74 +1,7 @@
 #!/usr/bin/env node
-const chalk = require('chalk');
-const fs = require('fs-extra');
+const createProjectDirectories = require('./lib/create-project-directories');
+const createOutputDirectories = require('./lib/create-output-directories');
 
-var root_dir = process.cwd();
-var proj_dir = ['public', 'meta', 'markdown'];
-var pub_dir = ['css', 'img', 'js'];
+createProjectDirectories(process.cwd());
+createOutputDirectories(process.cwd());
 
-var index_page = `${root_dir || '.'}/markdown/index.md`;
-var default_meta_json = `${root_dir || '.'}/meta/defaults.json`;
-var main_css = `${root_dir || '.'}/public/css/main.css`;
-
-var package_json = fs.readFileSync(`${__dirname}/lib/_package.json`);
-var default_meta = fs.readFileSync(`${__dirname}/lib/_defaults.json`);
-
-proj_dir.forEach(dir => {
-	let dirName = `${root_dir || '.'}/${dir}`;
-	fs
-		.ensureDir(dirName)
-		.then(() => successMsg(dirName))
-		.catch(errorMsg);
-});
-
-pub_dir.forEach(dir => {
-	let dirName = `${root_dir || '.'}/public/${dir}`;
-	fs
-		.ensureDir(dirName)
-		.then(() => successMsg(dirName))
-		.catch(errorMsg);
-});
-
-fs.writeFile(index_page, '# Hello World!', function(err) {
-	if (err) {
-		console.error(chalk.red(`${err.message}`));
-		throw err;
-	}
-	console.log(chalk.dim.yellow(`Created ${index_page}`));
-});
-
-fs.writeFile(default_meta_json, default_meta,  function(err){
-	if (err) {
-		console.error(chalk.red(`${err.message}`));
-		throw err;
-	}
-	console.log(chalk.dim.yellow(`Created ${default_meta_json}`));
-});
-
-fs.writeFile(main_css, '', function(err) {
-	if (err) {
-		console.error(chalk.red(`${err.message}`));
-		throw err;
-	}
-	console.log(chalk.dim.yellow(`Created ${main_css}`));
-});
-
-var packageExists = fs.existsSync('./package.json');
-if(!packageExists){
-	fs.writeFile('package.json', package_json, function(err){
-		if(err){
-			console.error(chalk.red(`${err.message}`));
-			throw err;
-		}
-
-		console.log(chalk.dim.yellow(`Copied package.json`));
-	});
-}
-
-function successMsg(dirName) {
-	console.log(chalk.dim.green(`Created ${dirName}`));
-}
-
-function errorMsg(err) {
-	console.error(chalk.red(`${err.message}`));
-}
