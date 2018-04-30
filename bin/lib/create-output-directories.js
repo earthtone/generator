@@ -11,6 +11,8 @@ async function createOutputDirectories(root_dir){
 			.then(() => console.log(message.success(`Created ${dirName}`)))
 			.catch(e => console.error(message.error(e.message)));
 	});
+
+  await fs.writeFileSync(main_css, `.slides { width: 100vw; height: 100vh; }`);
 }
 
 module.exports = createOutputDirectories;
