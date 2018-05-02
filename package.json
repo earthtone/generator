@@ -1,33 +1,37 @@
 {
-  "name": "@earthtone/grayson-generator",
-  "version": "2.1.0",
-  "description": "Static Site Generator",
-  "main": "index.js",
-  "scripts": {
-    "pretest": "eslint ./**/*.js",
-    "test": "tape tests/*.test.js | tap-spec"
-  },
-  "bin": {
-    "grayson": "./bin/grayson.js"
-  },
-  "author": "earthtone <earthlyillusion@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^4.14.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.8.0",
-    "tape-run": "^4.0.0"
-  },
-  "dependencies": {
-    "chalk": "^2.3.0",
-    "commander": "^2.13.0",
-    "fs-extra": "^5.0.0",
-    "highlight.js": "^9.12.0",
-    "markdown-it": "^8.4.1",
-    "markdown-it-attrs": "^1.2.1",
-    "markdown-it-container": "^2.0.0",
-    "markdown-it-named-headings": "^1.1.0",
-    "shelljs": "^0.8.1",
-    "through2": "^2.0.3"
-  }
+	"name": "@earthtone/grayson-generator",
+	"version": "2.1.0",
+	"description": "Static Site Generator",
+	"main": "index.js",
+	"scripts": {
+		"pretest": "eslint ./**/*.js",
+		"test": "tape tests/*.test.js | tap-spec"
+	},
+	"bin": {
+		"grayson": "./bin/cli.js"
+	},
+	"author": "earthtone <earthlyillusion@gmail.com>",
+	"license": "ISC",
+	"devDependencies": {
+		"eslint": "^4.14.0",
+		"nanoid": "^1.0.2",
+		"read-stream": "^2.1.1",
+		"tap-spec": "^4.1.1",
+		"tape": "^4.8.0",
+		"tape-run": "^4.0.0"
+	},
+	"dependencies": {
+		"chalk": "^2.3.0",
+		"commander": "^2.13.0",
+		"concat-stream": "^1.6.2",
+		"fs-extra": "^5.0.0",
+		"highlight.js": "^9.12.0",
+		"markdown-it": "^8.4.1",
+		"markdown-it-attrs": "^1.2.1",
+		"markdown-it-container": "^2.0.0",
+		"markdown-it-named-headings": "^1.1.0",
+		"ora": "^2.1.0",
+		"shelljs": "^0.8.1",
+		"through2": "^2.0.3"
+	}
 }

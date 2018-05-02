@@ -8,6 +8,6 @@
 	"keywords": "page, sample",
 	"author": "None",
 	"favicon": "img/favicon.png",
-	"viewport": "width=deivce-width, initial-scale=1",
+	"viewport": "width=device-width, initial-scale=1",
 	"extra": []
 }

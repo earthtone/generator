@@ -1,5 +1,5 @@
 const test = require('tape');
-const md = require('../bin/lib/markdown-settings');
+const md = require('../lib/markdown-settings');
 
 test('Markdown Settings', function(assert){
 	
