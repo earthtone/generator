@@ -1,5 +1,5 @@
 const test = require('tape');
-const makeNavList = require('../bin/lib/make-nav-list');
+const makeNavList = require('../lib/make-nav-list');
 
 test('Make Nav List', function(assert){
 	{

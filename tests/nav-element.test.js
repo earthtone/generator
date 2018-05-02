@@ -1,5 +1,5 @@
 const test = require('tape');
-const navElement = require('../bin/lib/nav-element');
+const navElement = require('../lib/nav-element');
 
 test('Nav Element', function(assert){
 	{

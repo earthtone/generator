@@ -1,26 +1,27 @@
-const fs = require('fs');
-const shell = require('shelljs');
 const test = require('tape');
-const generateSlides = require('../lib/generate-slides');
+const shell = require('shelljs');
+const fs = require('fs');
 
-test('Generate Slides', function(assert){
-	generateSlides(setup(5));
+const generatePages = require('../lib/generate-pages');
 
-	{
-		let message = 'creates one `.html` files from multiple `.md` files';
-		let actual = fs.existsSync(`${output_dir}/slides.html`);
-		let expected = true;
+test('Generate Pages', function(assert) {
+	generatePages(setup(5));
 
-		assert.equal(actual, expected, message);
-	}
-	
-	{
-		let message = 'does not create `.html` file for *each* `.md` file';
-		let actual = fs.readdirSync(`${output_dir}`).filter(key => key.match(/\.html/)).length;
-		let expected = 1; 
+	fs.readdirSync(output_dir).forEach(file => {
+		let message = 'generates HTML file';
+		let actual = file.match(/\.html$/).length;
+		let expected = 1;
 
 		assert.equal(actual, expected, message);
-	}
+	});
+
+	fs.readdirSync(output_dir).forEach((file, i) => {
+		let message = 'generates HTML file for each MD file';
+		let actual = file.split('.')[0];
+		let expected = fs.readdirSync(input_dir)[i].split('.')[0];
+
+		assert.equal(actual, expected, message);
+	});
 
 	teardown();
 	assert.end();
