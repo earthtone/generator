@@ -1,5 +1,5 @@
 const test = require('tape');
-const template = require('../lib/template');
+const template = require('../lib/document-template');
 
 test('Template', function(assert){
 

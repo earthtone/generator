@@ -4,7 +4,6 @@
 	"description": "Static Site Generator",
 	"main": "index.js",
 	"scripts": {
-		"pretest": "eslint ./**/*.js",
 		"test": "tape tests/*.test.js | tap-spec"
 	},
 	"bin": {
@@ -13,19 +12,20 @@
 	"author": "earthtone <earthlyillusion@gmail.com>",
 	"license": "ISC",
 	"devDependencies": {
+		"assert-html": "^1.1.5",
 		"eslint": "^4.14.0",
 		"nanoid": "^1.0.2",
-		"read-stream": "^2.1.1",
 		"tap-spec": "^4.1.1",
 		"tape": "^4.8.0",
 		"tape-run": "^4.0.0"
 	},
 	"dependencies": {
 		"chalk": "^2.3.0",
-		"commander": "^2.13.0",
 		"concat-stream": "^1.6.2",
-		"fs-extra": "^5.0.0",
+		"from2-string": "^1.1.0",
 		"highlight.js": "^9.12.0",
+		"hyperstream": "^1.2.2",
+		"is-dir": "^1.0.0",
 		"markdown-it": "^8.4.1",
 		"markdown-it-attrs": "^1.2.1",
 		"markdown-it-container": "^2.0.0",

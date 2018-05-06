@@ -1,5 +1,5 @@
 const test = require('tape');
-const headElement = require('../lib/head-element');
+const headElement = require('../lib/document-head');
 const data = require('../lib/_defaults.json');
 
 test('Head Element', function(assert){
