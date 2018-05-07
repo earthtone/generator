@@ -7,7 +7,7 @@
 		"test": "tape tests/*.test.js | tap-spec"
 	},
 	"bin": {
-		"grayson": "./bin/cli.js"
+		"grayson": "./cli.js"
 	},
 	"author": "earthtone <earthlyillusion@gmail.com>",
 	"license": "ISC",
