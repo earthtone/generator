@@ -1,0 +1,18 @@
+{
+	"name": "fake-project",
+	"version": "2.2.0",
+	"description": "For Tests",
+	"main": "index.js",
+	"author": "Joe Schmoe",
+	"license": "ISC",
+	"grayson": {
+		"input": "./md",
+		"metadata": {
+			"stylesheets": [
+				"reset.css",
+				"debug.css",
+				"main.css"	
+			]	
+		}	
+	}
+}

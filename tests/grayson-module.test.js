@@ -3,7 +3,7 @@ const isdir = require('is-dir');
 const shell = require('shelljs');
 
 const test = require('tape');
-const grayson = require('../lib/grayson');
+const grayson = require('../');
 
 test('Grayson Input', function(assert){
 	{
@@ -94,10 +94,10 @@ test('Grayson Output', function(assert) {
 		grayson({ 
 			input: __dirname + '/md', 
 			output: __dirname + '/html',
-			slides: true
+			mode: 'slides'
 		});
 
-		let message = 'Writes one output file for all input files if given slide option';
+		let message = 'Writes one output file for all input files if "mode" property is "slides"';
 		let actual = fs.readdirSync(__dirname + '/html').length; 
 		let expected = 1;
 		assert.equal(actual, expected, message);

@@ -43,7 +43,7 @@ test('Template', function(assert){
 	{
 		let message = 'renders meta values in head element';
 		let actual = template({ 
-			meta: {
+			metadata: {
 				author: 'Robert Frost'
 			},
 			content: { 
