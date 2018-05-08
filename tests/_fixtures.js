@@ -10,8 +10,11 @@ function teardown(){
 	var allHtml = shell.find('.').filter(file => file.match(/\.html$/));
 
 	shell.rm(allHtml);
+
 	if(fs.existsSync(`${__dirname}/hello.md`)){
 		shell.rm(`${__dirname}/hello.md`);
+	} else if (fs.existsSync(`${process.cwd()}/hello.md`)){
+		shell.rm(`${process.cwd()}/hello.md`);	
 	}
 
 	if(fs.existsSync(`${__dirname}/package.json`)){

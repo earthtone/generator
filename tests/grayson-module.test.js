@@ -3,6 +3,8 @@ const isdir = require('is-dir');
 const shell = require('shelljs');
 
 const test = require('tape');
+const assertHtml = require('assert-html');
+const {teardown} = require('./_fixtures');
 const grayson = require('../');
 
 test('Grayson Input', function(assert){
@@ -52,11 +54,11 @@ test('Grayson Output', function(assert) {
 			output: __dirname + '/html' 
 		});
 
-		let message = 'Writes an output file to given a destination for given file';
+		let message = 'Writes an output file to a given a destination for given file';
 		let actual = fs.existsSync(__dirname + '/html/hello-world.html');
 		let expected = true;
 
-		assert.equal(actual, expected, message + ' for given file');
+		assert.equal(actual, expected, message);
 		teardown();
 	}
 
@@ -67,7 +69,7 @@ test('Grayson Output', function(assert) {
 		});
 
 		let message = 'Writes output files to given a destination for given directory';
-		let actual = fs.existsSync(__dirname + '/html/index.html');
+		let actual = fs.existsSync(__dirname + '/html/gday-world.html');
 		let expected = true;
 		assert.equal(actual, expected, message);
 
@@ -103,14 +105,113 @@ test('Grayson Output', function(assert) {
 		assert.equal(actual, expected, message);
 		teardown();
 	}
+
+	{
+		grayson({ 
+			input: __dirname + '/md', 
+			output: __dirname + '/html',
+			mode: 'blog'
+		});
+
+		let message = 'Writes an index.html file if "mode" property is "blog"';
+		let actual = fs.existsSync(`${__dirname}/html/index.html`);
+		let expected = true;
+		assert.equal(actual, expected, message);
+		teardown();
+	}
+
+	{
+		grayson({ 
+			input: __dirname + '/md', 
+			output: __dirname + '/html',
+			mode: 'blog'
+		});
+
+		let actual = fs.readFileSync(`${__dirname}/html/index.html`).toString();
+		let expected = `<!DOCTYPE html>
+		<html lang="en">
+			<head>
+		<title>Head Element</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<meta name="description" content="This is a page">
+		<meta name="keywords" content="page, sample">
+		<meta name="author" content="None">
+
+		
+
+		
+	
+		
+
+		<link rel="icon" type="image/png" href="img/favicon.png">
+	</head>
+			<body>
+				<nav><a href="/gday-world.html">gday world</a><a href="/hello-world.html">hello world</a><a href="/wassup-world.html">wassup world</a></nav>
+				<h1 id="goodbye-cruel-world">Goodbye, Cruel World!</h1>
+<p>This is another markdown file</p>
+<p class="data-customtrue">It allow for custom classes {.custom-class}
+As well as custom attributes</p>
+<div class="warning">
+<p><strong>WARNING</strong>: <strong>it may contain content blocks</strong></p>
+</div>
+<ul>
+<li>this</li>
+<li>is a</li>
+<li>unor</li>
+<li>dered</li>
+<li>list</li>
+</ul>
+<pre><code class="language-json">{
+	<span class="hljs-attr">"codeBlocks"</span>: <span class="hljs-string">"true"</span>,
+  <span class="hljs-attr">"syntaxHighlighting"</span>: <span class="hljs-string">"true"</span>
+}
+</code></pre>
+<h1 id="hello-world">Hello, World!</h1>
+<p>This is a markdown file</p>
+<p class="data-customtrue">It allow for custom classes {.custom-class}
+As well as custom attributes</p>
+<div class="warning">
+<p><strong>WARNING</strong>: <strong>it may contain content blocks</strong></p>
+</div>
+<ul>
+<li>this</li>
+<li>is a</li>
+<li>unor</li>
+<li>dered</li>
+<li>list</li>
+</ul>
+<pre><code class="language-json">{
+	<span class="hljs-attr">"codeBlocks"</span>: <span class="hljs-string">"true"</span>,
+  <span class="hljs-attr">"syntaxHighlighting"</span>: <span class="hljs-string">"true"</span>
+}
+</code></pre>
+<h1 id="hello-world-1">Hello, World!</h1>
+<p>This is a markdown file</p>
+<p class="data-customtrue">It allow for custom classes {.custom-class}
+As well as custom attributes</p>
+<div class="warning">
+<p><strong>WARNING</strong>: <strong>it may contain content blocks</strong></p>
+</div>
+<ul>
+<li>this</li>
+<li>is a</li>
+<li>unor</li>
+<li>dered</li>
+<li>list</li>
+</ul>
+<pre><code class="language-json">{
+	<span class="hljs-attr">"codeBlocks"</span>: <span class="hljs-string">"true"</span>,
+  <span class="hljs-attr">"syntaxHighlighting"</span>: <span class="hljs-string">"true"</span>
+}
+</code></pre>
+
+			</body>
+		</html>`;
+
+		assertHtml(assert, actual, expected);	
+		teardown();
+	}
 	assert.end();
 });
-
-function teardown(){
-	var allHtml = shell.find('.').filter(file => file.match(/\.html$/));
-	shell.rm(allHtml);
-
-	if(fs.existsSync(`${__dirname}/package.json`)){
-		shell.rm(`${__dirname}/package.json`);
-	}
-}
