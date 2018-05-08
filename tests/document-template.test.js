@@ -1,5 +1,5 @@
 const test = require('tape');
-const template = require('../lib/template');
+const template = require('../lib/document-template');
 
 test('Template', function(assert){
 
@@ -43,7 +43,7 @@ test('Template', function(assert){
 	{
 		let message = 'renders meta values in head element';
 		let actual = template({ 
-			meta: {
+			metadata: {
 				author: 'Robert Frost'
 			},
 			content: { 
