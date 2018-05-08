@@ -84,7 +84,7 @@ test('Grayson Output', function(assert) {
 		});
 
 		let message = 'Writes one output file per input file';
-		let actual = fs.readdirSync(__dirname + '/html').length; 
+		let actual = fs.readdirSync(__dirname + '/html').filter(file => file !== '.gitkeep').length; 
 		let expected = 3;
 		assert.equal(actual, expected, message);
 		teardown();
@@ -98,7 +98,7 @@ test('Grayson Output', function(assert) {
 		});
 
 		let message = 'Writes one output file for all input files if "mode" property is "slides"';
-		let actual = fs.readdirSync(__dirname + '/html').length; 
+		let actual = fs.readdirSync(__dirname + '/html').filter(file => file === '.gitkeep').length; 
 		let expected = 1;
 		assert.equal(actual, expected, message);
 		teardown();
@@ -107,5 +107,10 @@ test('Grayson Output', function(assert) {
 });
 
 function teardown(){
-	shell.rm('-rf', `${__dirname}/html/*`);
+	var allHtml = shell.find('.').filter(file => file.match(/\.html$/));
+	shell.rm(allHtml);
+
+	if(fs.existsSync(`${__dirname}/package.json`)){
+		shell.rm(`${__dirname}/package.json`);
+	}
 }

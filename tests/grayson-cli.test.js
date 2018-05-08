@@ -3,6 +3,7 @@ const fs = require('fs');
 const shell = require('shelljs');
 
 const grayson = `${__dirname}/../cli`;
+const { setup,teardown } = require('./_fixtures');
 
 test('Grayson CLI', function(assert){
 	{
@@ -29,7 +30,7 @@ test('Grayson CLI', function(assert){
 		setup();
 		shell.exec(`node ${grayson} --output ${__dirname}/html`);
 		let message =	'accepts command line arguments';
-		let actual = fs.readdirSync(`${__dirname}/html`).length;
+		let actual = fs.readdirSync(`${__dirname}/html`).filter(file => file !== '.gitkeep').length;
 		let expected = fs.readdirSync(`${__dirname}/md`).length - 1;
 		assert.equal(actual, expected, message);
 		teardown();
@@ -38,16 +39,3 @@ test('Grayson CLI', function(assert){
 	assert.end();
 });
 
-function setup(){
-	shell.cd(__dirname);
-	shell.cp(`${__dirname}/_demo.json`, `${__dirname}/package.json`);
-}
-
-function teardown(){
-	var allHtml = shell.find('.').filter(file => file.match(/\.html$/));
-	shell.rm(allHtml);
-
-	if(fs.existsSync(`${__dirname}/package.json`)){
-		shell.rm(`${__dirname}/package.json`);
-	}
-}

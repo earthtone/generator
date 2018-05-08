@@ -1,18 +1,23 @@
+const fs = require('fs');
 const shell = require('shelljs');
-var output = `${__dirname}/test_dir`;
 
-exports.setup = function(options) {
-	shell.mkdir('-p', output);
-	return Object.assign({
-		output,
-		data: `${output}/meta`,
-		public: 'public',
-		meta: 'meta',
-		markdown: 'markdown',
-		quiet: true,
-	}, options);
-};
+function setup(){
+	shell.cd(__dirname);
+	shell.cp(`${__dirname}/_demo.json`, `${__dirname}/package.json`);
+}
 
-exports.teardown = function() {
-	shell.rm('-rf', output);
-};
+function teardown(){
+	var allHtml = shell.find('.').filter(file => file.match(/\.html$/));
+
+	shell.rm(allHtml);
+	if(fs.existsSync(`${__dirname}/hello.md`)){
+		shell.rm(`${__dirname}/hello.md`);
+	}
+
+	if(fs.existsSync(`${__dirname}/package.json`)){
+		shell.rm(`${__dirname}/package.json`);
+	}
+}
+
+exports.setup = setup;
+exports.teardown = teardown;
