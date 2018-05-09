@@ -148,67 +148,11 @@ test('Grayson Output', function(assert) {
 		<link rel="icon" type="image/png" href="img/favicon.png">
 	</head>
 			<body>
-				<nav><a href="/gday-world.html">gday world</a><a href="/hello-world.html">hello world</a><a href="/wassup-world.html">wassup world</a></nav>
-				<h1 id="goodbye-cruel-world">Goodbye, Cruel World!</h1>
-<p>This is another markdown file</p>
-<p class="data-customtrue">It allow for custom classes {.custom-class}
-As well as custom attributes</p>
-<div class="warning">
-<p><strong>WARNING</strong>: <strong>it may contain content blocks</strong></p>
-</div>
-<ul>
-<li>this</li>
-<li>is a</li>
-<li>unor</li>
-<li>dered</li>
-<li>list</li>
-</ul>
-<pre><code class="language-json">{
-	<span class="hljs-attr">"codeBlocks"</span>: <span class="hljs-string">"true"</span>,
-  <span class="hljs-attr">"syntaxHighlighting"</span>: <span class="hljs-string">"true"</span>
-}
-</code></pre>
-<h1 id="hello-world">Hello, World!</h1>
-<p>This is a markdown file</p>
-<p class="data-customtrue">It allow for custom classes {.custom-class}
-As well as custom attributes</p>
-<div class="warning">
-<p><strong>WARNING</strong>: <strong>it may contain content blocks</strong></p>
-</div>
-<ul>
-<li>this</li>
-<li>is a</li>
-<li>unor</li>
-<li>dered</li>
-<li>list</li>
-</ul>
-<pre><code class="language-json">{
-	<span class="hljs-attr">"codeBlocks"</span>: <span class="hljs-string">"true"</span>,
-  <span class="hljs-attr">"syntaxHighlighting"</span>: <span class="hljs-string">"true"</span>
-}
-</code></pre>
-<h1 id="hello-world-1">Hello, World!</h1>
-<p>This is a markdown file</p>
-<p class="data-customtrue">It allow for custom classes {.custom-class}
-As well as custom attributes</p>
-<div class="warning">
-<p><strong>WARNING</strong>: <strong>it may contain content blocks</strong></p>
-</div>
-<ul>
-<li>this</li>
-<li>is a</li>
-<li>unor</li>
-<li>dered</li>
-<li>list</li>
-</ul>
-<pre><code class="language-json">{
-	<span class="hljs-attr">"codeBlocks"</span>: <span class="hljs-string">"true"</span>,
-  <span class="hljs-attr">"syntaxHighlighting"</span>: <span class="hljs-string">"true"</span>
-}
-</code></pre>
-
+				<nav><a href="/">Home</a><a href="/gday-world.html">gday world</a><a href="/hello-world.html">hello world</a><a href="/wassup-world.html">wassup world</a></nav>
+				
 			</body>
-		</html>`;
+		</html>
+`;
 
 		assertHtml(assert, actual, expected);	
 		teardown();
