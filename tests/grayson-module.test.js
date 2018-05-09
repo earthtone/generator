@@ -147,12 +147,13 @@ test('Grayson Output', function(assert) {
 
 		<link rel="icon" type="image/png" href="img/favicon.png">
 	</head>
-			<body>
+			<body id="index">
 				<nav><a href="/">Home</a><a href="/gday-world.html">gday world</a><a href="/hello-world.html">hello world</a><a href="/wassup-world.html">wassup world</a></nav>
-				
+				<main>
+					
+				</main>
 			</body>
-		</html>
-`;
+		</html>`;
 
 		assertHtml(assert, actual, expected);	
 		teardown();
