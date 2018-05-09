@@ -24,7 +24,7 @@ grayson [options]
   --input, -i       Source directory or file (defaults to current directory)
   --output, -o      Target directory (defaults to current directory)
 
-  --mode, -m       	Generation mode (defaults to "page")
+  --mode, -m				Generation mode (defaults to "page")
 ```
 
 Default options and metadata are overwritten by any options or additional metadata available in a project's `package.json` file via the `grayson` node.
@@ -51,7 +51,7 @@ Default options and metadata are overwritten by any options or additional metada
 }
 ```
 
-Additionally, any options passed in via the command-line, overwrite optiosn passed in via `package.json`.
+Additionally, any options passed in via the command-line, overwrite options passed in via `package.json`.
 
 ### Modes
 
