@@ -1,6 +1,6 @@
 {
 	"name": "@earthtone/grayson-generator",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "Static Site Generator",
 	"main": "index.js",
 	"scripts": {
