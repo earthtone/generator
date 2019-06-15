@@ -1,1 +1,1 @@
-module.exports = require('./lib/grayson');
+module.exports = require('./lib/grayson')
